@@ -1,0 +1,151 @@
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+struct Question
+{
+    char question[200];
+    char options[4][100];
+    char answer;
+};
+
+int main()
+{
+    struct Question quiz[20] =
+    {
+        {"Which function is used to display output in C?",
+         {"scanf()", "printf()", "getch()", "main()"}, 'B'},
+
+        {"Which header file is required for printf()?",
+         {"stdlib.h", "string.h", "stdio.h", "math.h"}, 'C'},
+
+        {"Which symbol is used to end a statement in C?",
+         {".", ",", ":", ";"}, 'D'},
+
+        {"Which data type is used to store integers?",
+         {"float", "int", "char", "double"}, 'B'},
+
+        {"Which operator is used for multiplication?",
+         {"+", "-", "*", "/"}, 'C'},
+
+        {"What is the starting point of a C program?",
+         {"printf()", "start()", "main()", "scanf()"}, 'C'},
+
+        {"Which loop executes at least once?",
+         {"for", "while", "do-while", "nested for"}, 'C'},
+
+        {"Which keyword is used to declare a constant?",
+         {"constant", "const", "fixed", "static"}, 'B'},
+
+        {"Which function is used to take input in C?",
+         {"printf()", "scanf()", "puts()", "strlen()"}, 'B'},
+
+        {"Which data type stores a single character?",
+         {"int", "float", "char", "double"}, 'C'},
+
+        {"Which operator checks equality?",
+         {"=", "==", "!=", ">="}, 'B'},
+
+        {"Which keyword is used to return a value from a function?",
+         {"break", "continue", "return", "exit"}, 'C'},
+
+        {"Which header file contains string functions?",
+         {"stdio.h", "string.h", "math.h", "conio.h"}, 'B'},
+
+        {"What is the index of the first element in an array?",
+         {"1", "-1", "0", "2"}, 'C'},
+
+        {"Which symbol is used to access the address of a variable?",
+         {"*", "&", "%", "#"}, 'B'},
+
+        {"Which keyword is used to define a structure?",
+         {"union", "class", "struct", "typedef"}, 'C'},
+
+        {"Which function is used to find string length?",
+         {"strcpy()", "strcmp()", "strlen()", "strcat()"}, 'C'},
+
+        {"Which statement is used to make decisions?",
+         {"if", "printf", "return", "include"}, 'A'},
+
+        {"Which function is used to allocate dynamic memory?",
+         {"free()", "malloc()", "strlen()", "printf()"}, 'B'},
+
+        {"Which function is used to close a file?",
+         {"fopen()", "fread()", "fclose()", "fprintf()"}, 'C'}
+    };
+
+    int score = 0;
+    char userAnswer;
+
+    printf("====================================\n");
+    printf("       C PROGRAMMING QUIZ\n");
+    printf("====================================\n");
+
+    printf("Instructions:\n");
+    printf("1. There are 20 questions.\n");
+    printf("2. Each question carries 1 mark.\n");
+    printf("3. Enter A, B, C or D as your answer.\n");
+
+    printf("\nPress Enter to start the quiz...");
+    getchar();
+
+    for (int i = 0; i < 20; i++)
+    {
+        printf("\n------------------------------------\n");
+        printf("Question %d: %s\n", i + 1, quiz[i].question);
+
+        for (int j = 0; j < 4; j++)
+        {
+            printf("%c. %s\n", 'A' + j, quiz[i].options[j]);
+        }
+
+        printf("Your answer: ");
+        scanf(" %c", &userAnswer);
+
+        userAnswer = toupper(userAnswer);
+
+        if (userAnswer == quiz[i].answer)
+        {
+            printf("Correct answer!\n");
+            score++;
+        }
+        else
+        {
+            printf("Wrong answer!\n");
+            printf("Correct answer: %c\n", quiz[i].answer);
+        }
+    }
+
+    printf("\n====================================\n");
+    printf("             QUIZ RESULT\n");
+    printf("====================================\n");
+
+    printf("Total Questions : 20\n");
+    printf("Correct Answers : %d\n", score);
+    printf("Wrong Answers   : %d\n", 20 - score);
+    printf("Final Score     : %d/20\n", score);
+
+    if (score >= 16)
+    {
+        printf("Performance: Excellent!\n");
+    }
+    else if (score >= 11)
+    {
+        printf("Performance: Good!\n");
+    }
+    else if (score >= 6)
+    {
+        printf("Performance: Keep Practicing!\n");
+    }
+    else
+    {
+        printf("Performance: Needs Improvement!\n");
+    }
+
+    printf("====================================\n");
+    printf("       Thank You for Playing!\n");
+    printf("====================================\n");
+
+    return 0;
+}
